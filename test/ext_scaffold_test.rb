@@ -16,7 +16,7 @@ class ExtScaffoldTest < Test::Unit::TestCase
 
     # install ext_scaffold plugin
     FileUtils.mkdir_p './ext_scaffold_demo/vendor/plugins/ext_scaffold'
-    FileUtils.cp_r %w(init.rb install.rb uninstall.rb ./assets ./generators ./lib ./tasks), './ext_scaffold_demo/vendor/plugins/ext_scaffold'
+    FileUtils.cp_r %w(init.rb install.rb uninstall.rb ./generators ./lib ./tasks), './ext_scaffold_demo/vendor/plugins/ext_scaffold'
     `cd ext_scaffold_demo/vendor/plugins/ext_scaffold; ruby ../../../script/runner ./install.rb`
     assert_equal 0, $?
 
@@ -57,7 +57,7 @@ end
       ext_base_path = './ext_scaffold_demo/public/ext'
       FileUtils.ln_s ENV['EXTJS_LOCATION'], ext_base_path
       # check availability of neccessary files
-      %w(examples/shared/icons/fam/add.gif examples/shared/icons/fam/delete.gif examples/shared/icons/fam/cog.png resources/images/default/shared/glass-bg.gif).each do |f|
+      %w(ext/src/locale/ext-lang-en.js ext/resources/images/default/s.gif examples/shared/icons/fam/add.gif examples/shared/icons/fam/delete.gif examples/shared/icons/fam/cog.png examples/grid/details.gif resources/images/default/shared/glass-bg.gif).each do |f|
         assert File.readable?(File.join(ext_base_path,f)), "#{f} is not availble in your Ext installation"
       end
     else
